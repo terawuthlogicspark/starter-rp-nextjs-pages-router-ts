@@ -59,16 +59,19 @@ This example uses the Next.js Pages Router, which requires marking your PDF comp
 1.  **Import the component**: Import the desired React PDF component into your codes
 
 ```tsx
+"use client";
 import {
   RPProvider,
   RPLayout,
   RPPages,
+  RPProviderProps,
+  RPLayoutProps
 } from "@react-pdf-kit/viewer";
 
 interface Props {
   showToolbar?: boolean;
-  providerProps?: Record<string, unknown>;
-  defaultLayoutProps?: Record<string, unknown>;
+  providerProps?: RPProviderProps;
+  defaultLayoutProps?: RPLayoutProps;
 }
 
 const AppPdfViewer = (props: Props) => {
@@ -99,13 +102,13 @@ export default AppPdfViewer;
 
 ```tsx
 "use client";
-import { RPConfig } from "@react-pdf-kit/viewer";
+import { RPConfig, RPConfigProps } from "@react-pdf-kit/viewer";
 import { type PropsWithChildren } from "react";
 
 function AppProviders({
   children,
   ...props
-}: PropsWithChildren<Record<string, unknown>>) {
+}: PropsWithChildren<RPConfigProps>) {
   return <RPConfig {...props}>{children}</RPConfig>;
 }
 export default AppProviders;
